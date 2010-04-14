@@ -402,7 +402,7 @@ function ls($dir) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <title><?php echo $config['w2box_title']; ?> | powered by w2box</title>
   <link rel="stylesheet" type="text/css" href="<?php echo rooturl(); ?>w2box.css" />
   <script type="text/javascript">
@@ -515,7 +515,10 @@ if (empty($files)){
 			echo '</a>';
 		}
 		echo '&nbsp;';
-		if ($file['ext']!="directory") echo '<a href="?download='.urlencode($file['file']).'"><img src="'.rooturl().'images/download_arrow.gif" alt="('.$lang['download'].')" title="'.$lang['download_link'].'" /></a></td>';
+		if ($file['ext']!="directory") {
+			$download_prefix = $config['use_download_cgi'] ? $config['download_cgiscript'].'?p='.$config['storage_path'].'/' : '?download=';
+			echo '<a href="'.$download_prefix.urlencode($file['file']).'"><img src="'.rooturl().'images/download_arrow.gif" alt="('.$lang['download'].')" title="'.$lang['download_link'].'" /></a></td>';
+		}
 		echo '<td>'.date ($lang['date_format'], $file['date']).'</td>';
 		echo '<td>';
 		if ($file['ext']!="directory") echo getfilesize($file['size']);

@@ -45,6 +45,10 @@ $config['upload_cgiscript']=rooturl()."upload.cgi";
 //(ie "/home/username/tmp", "~tmp", "C:/wamp/tmp")
 $config['upload_tmpdir']="tmp";
 
+//active download cgi
+$config['use_download_cgi']=true;
+$config['download_cgiscript']=rooturl()."download.cgi";;
+
 //--- admin ---
 // To log-in as an admin when every feature is
 // hidden, click on "Powered" (hidden link) at

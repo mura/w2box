@@ -28,12 +28,6 @@ unless( open $fh, '<', "./data/$path" ) {
 }
 
 my $size = -s "./data/$path";
-#283     header("Content-Type: application/octet-stream");
-#284     header("Content-Size: ".filesize($file));
-#285     header("Content-Disposition: attachment; filename=\"".basename($file)."\"");
-#286     header("Content-Length: ".filesize($file));
-#287     header("Content-transfer-encoding: binary");
-
 print $q->header(
   -type => 'application/octet-stream',
   -Content_Size => $size,

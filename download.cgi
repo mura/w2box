@@ -8,26 +8,27 @@ my $storage_path = 'data';
 
 my $q = new CGI;
 my $path = $q->param('p');
-unless( $path && -e "./data/$path" ) {
+$path =~ s,\.\./,,g;
+unless( $path && -e $path ) {
   print $q->header('text/html', '404 Not Found');
   print "404 Not Found\n";
   exit;
 }
 
-unless( -r "./data/$path" ) {
+unless( -r $path ) {
   print $q->header('text/html', '403 Forbidden');
   print "403 Forbidden\n";
   exit;
 }
 
 my $fh;
-unless( open $fh, '<', "./data/$path" ) {
+unless( open $fh, '<', $path ) {
   print $q->header('text/html', '500 Internal Server Error');
   print "File open failed\n";
   exit;
 }
 
-my $size = -s "./data/$path";
+my $size = -s $path;
 print $q->header(
   -type => 'application/octet-stream',
   -Content_Size => $size,

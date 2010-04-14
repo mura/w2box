@@ -1,0 +1,68 @@
+-----------------------------285702976329901
+Content-Disposition: form-data; name="file"; filename="pv.txt"
+Content-Type: text/plain
+
+{{expand 1} {{{expand 1 title /comput3r/} {{{expand 1 title *w2box*} {{{expand 0 title 
+{no link js error ?download}} {}} {{expand 0 title 
+{jquery rewrite}} {}} {{expand 0 title jquery.browsable} {}} {{expand 0 title jquery.ajaxupload} {}} {{expand 0 title change1} {{{expand 0 title 
+{In order to upload files to a new folder it is necesary to change mode like this:}} {}} {{expand 0 title 
+{}} {}} {{expand 0 title 
+{//make dir}} {}} {{expand 0 title if\ (isset\ (\$_POST\['dir'\]))\ \{} {}} {{expand 0 title ...} {}} {{expand 1 title 
+{}} {{{expand 1 title if\ (mkdir(\$newdir))\ \{} {{{expand 1 title 
+{// neccesary to allow upload files to a}} {{{expand 0 title 
+{new folder}} {}}}} {{expand 0 title 
+{chmod($newdir, 0777);}} {}} {{expand 0 title 
+{}} {}} {{expand 0 title 
+{$loc = rooturl();}} {}} {{expand 0 title 
+{}} {}}}}}} {{expand 0 title ...} {}}}} {{expand 0 title change2} {{{expand 0 title index.php} {}} {{expand 0 title 
+{iso-8859-1 -> utf-8}} {}} {{expand 0 title config.php} {}} {{expand 0 title utf-8} {}} {{expand 0 title w2box.css} {}} {{expand 0 title 
+{dd -> @charset "UTF-8";}} {}}}} {{expand 0 title change3} {{{expand 0 title 
+{in w2box.css}} {}} {{expand 0 title 
+{overflow:none; is not correct, should be}} {}} {{expand 0 title 
+{overflow:auto/hidden/...;}} {}}}} {{expand 0 title change4} {{{expand 0 title 
+{}} {}} {{expand 0 title 
+{The following change fixes a bug in w2box 4.0.0b5 where delete doesn't work when direct links are disabled.}} {}} {{expand 0 title 
+{}} {}} {{expand 0 title 86c86,87} {}} {{expand 0 title 
+{<       $file = $config['storage_path'].'/'.basename($str);}} {}} {{expand 0 title ---} {}} {{expand 0 title 
+{>       $str = basename(substr($str,strpos($str,'?download=')+10));}} {}} {{expand 0 title 
+{>       $file = $config['storage_path'].'/'.$str;}} {}}}} {{expand 0 title change5} {{{expand 0 title 
+{I can't look in folders with protected downloads.}} {}}}} {{expand 0 title changr6} {{{expand 0 title 
+{Donation on the way...}} {}} {{expand 0 title 
+{Also, as additional contribution, I troubleshooted a couple of errors}} {}} {{expand 0 title 
+{showing up in my apache error log:}} {}} {{expand 0 title 
+{}} {}} {{expand 0 title 
+{[Wed Mar 12 19:29:34 2008] [error] [client 192.168.1.42] PHP Notice:}} {}} {{expand 0 title 
+{Undefined index:  d in /data/www/html/w2box/index.php on line 32,}} {}} {{expand 0 title 
+{referer: http://192.168.1.10/w2box/index.php}} {}} {{expand 0 title 
+{[Wed Mar 12 19:29:34 2008] [error] [client 192.168.1.42] PHP Notice:}} {}} {{expand 0 title 
+{Undefined variable: dir in /data/www/html/w2box/index.php on line 455,}} {}} {{expand 0 title 
+{referer: http://192.168.1.10/w2box/index.php}} {}} {{expand 0 title 
+{}} {}} {{expand 0 title 
+{The first error (line 32):}} {}} {{expand 1 title if\ (isset(\$_GET\['d'\])\ &&\ isset(\$_POST\['d'\]))\{} {{{expand 0 title 
+{$dir = (isset($_GET['d']))?$_GET['d']:$_POST['d'];}} {}}}} {{expand 0 title \}} {}} {{expand 1 title else\{} {{{expand 0 title 
+{$dir = "";}} {}}}} {{expand 0 title \}} {}} {{expand 0 title 
+{}} {}} {{expand 0 title 
+{The second error (line 455):}} {}} {{expand 0 title 
+{}} {}} {{expand 0 title if\ ((isset(\$dir))\ &&\ sizeof(\$dir)>0)\ \{} {}} {{expand 0 title 
+{}} {}} {{expand 0 title 
+{Don't know if its the greatest fix in the world, but I think it follows}} {}} {{expand 0 title 
+{good programming principle.}} {}} {{expand 0 title 
+{This was generated on a Slackware 12 box, Apache 2.2.4, PHP 5.2.5. (This}} {}} {{expand 0 title 
+{is my home server, but I use the same thing at work) I don't know if it}} {}} {{expand 0 title 
+{was specific to my box or not. The changes don't appear to break anything.}} {}} {{expand 0 title 
+{}} {}} {{expand 0 title 
+{There is a third:}} {}} {{expand 0 title 
+{[Wed Mar 12 19:41:02 2008] [error] [client 192.168.1.42] PHP Notice:}} {}} {{expand 0 title 
+{Undefined index: HTTP_ACCEPT_LANGUAGE in w2box/lang/index.php on line 4}} {}} {{expand 0 title 
+{}} {}} {{expand 0 title 
+{but I just bypassed it (commented it out) as I only intend to use}} {}} {{expand 0 title 
+{English anyways.}} {}} {{expand 0 title 
+{}} {}} {{expand 0 title 
+{Thanks again!}} {}} {{expand 0 title -Brent} {}}}} {{expand 0 title 
+{but is there any solution if the file name contain a quote...}} {}}}}}}}}
+
+-----------------------------285702976329901
+Content-Disposition: form-data; name="filename"
+
+my/pic.jpg
+-----------------------------285702976329901--

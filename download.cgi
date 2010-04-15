@@ -9,6 +9,8 @@ my $storage_path = 'data';
 my $q = new CGI;
 my $path = $q->param('p');
 $path =~ s,\.\./,,g;
+$path = "./$storage_path/$path";
+$path =~ s,//,/,g;
 unless( $path && -e $path ) {
   print $q->header('text/html', '404 Not Found');
   print "404 Not Found\n";

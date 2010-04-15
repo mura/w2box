@@ -516,7 +516,7 @@ if (empty($files)){
 		}
 		echo '&nbsp;';
 		if ($file['ext']!="directory") {
-			$download_prefix = $config['use_download_cgi'] ? $config['download_cgiscript'].'?p='.$config['storage_path'].'/' : '?download=';
+			$download_prefix = $config['use_download_cgi'] ? $config['download_cgiscript'].'?p='.(!empty($dir)?implode('/',$dir).'/':'') : '?download=';
 			echo '<a href="'.$download_prefix.urlencode($file['file']).'"><img src="'.rooturl().'images/download_arrow.gif" alt="('.$lang['download'].')" title="'.$lang['download_link'].'" /></a></td>';
 		}
 		echo '<td>'.date ($lang['date_format'], $file['date']).'</td>';

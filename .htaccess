@@ -1,5 +1,6 @@
 <IfModule mod_rewrite.c>
     RewriteEngine on
+
 	RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{QUERY_STRING} ^$
@@ -10,10 +11,9 @@
     RewriteCond %{QUERY_STRING} ^(.+)$
 	RewriteRule ^(.*)$ index.php?%1&d=$1&BAD_HOSTING=%{HTTP:Authorization} [L]
 	
-	
 	RewriteCond %{QUERY_STRING} ^(.*)$
 	RewriteRule (.+).php $1.php?%1&BAD_HOSTING=%{HTTP:Authorization}
 </IfModule>
 <IfModule mod_security.c>
-SecFilterScanPOST Off
+    SecFilterScanPOST Off
 </IfModule>

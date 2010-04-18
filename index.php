@@ -236,7 +236,7 @@ function uploadfile($file) {
 	}
 
 	if  ($errormsg=="") {
-		chmod ($filedest, 0755);
+		chmod ($filedest, 0644);
 		if ($config['log_upload']) logadm($lang['UPLOAD'].' '.$filedest);
 		$loc = rooturl();
 		if (sizeof($dir)>0) $loc .= join("/",$dir)."/";
@@ -302,8 +302,8 @@ function authorize($silent=false){
 			$auth = true; // user is authenticated
 		} else {
 			if (!$silent) {
-				header( 'WWW-Authenticate: Basic realm="w2box admin"' );
 				header( 'HTTP/1.0 401 Unauthorized' );
+				header( 'WWW-Authenticate: Basic realm="w2box admin"' );
 				echo 'Your are not allowed to access this function!';
 				exit;
 			}

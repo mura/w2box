@@ -37,7 +37,7 @@ else $dir = "";
 
 
 if ($dir && $config['enable_folder_maxdepth']){
-	$dir = split("/",$dir);
+	$dir = explode("/",$dir);
 	foreach ($dir as $k => $v) {
 		if (($v == "..") || ($v == ".") || ($v == "")) unset($dir[$k]);
 	}
@@ -153,7 +153,7 @@ if ($config['upload_progressbar']){
 	if (isset($_GET['sid'])) {
 		$sid = $_GET['sid'];
 		$tmp_dir = $config['upload_tmpdir'];
-		$sid = ereg_replace("[^a-zA-Z0-9]","",$sid);//clean sid
+		$sid = preg_replace("/[^a-zA-Z0-9]/","",$sid);//clean sid
 		$file = $tmp_dir.'/'.$sid.'_qstring';
 		if(!file_exists($file)) {
 			$errormsg = $lang['upload_error_sid'];
@@ -508,17 +508,20 @@ if (empty($files)){
 			
 			echo '<a href="'.$url.'">';
 			$maxlen=29;
-			if ($maxlen>0 && strlen($file['file'])>$maxlen)
-				echo substr($file['file'],0,$maxlen-3)."...";
+			if ($maxlen>0 && mb_strlen($file['file'])>$maxlen)
+				echo mb_substr($file['file'],0,$maxlen-3)."...";
 			else 
 				echo $file['file'];
 			echo '</a>';
 		}
 		echo '&nbsp;';
+		if ($file['ext']!="directory") echo '<a href="?download='.urlencode($file['file']).'"><img src="'.rooturl().'images/download_arrow.gif" alt="('.$lang['download'].')" title="'.$lang['download_link'].'" /></a></td>';
+		/*
 		if ($file['ext']!="directory") {
 			$download_prefix = $config['use_download_cgi'] ? $config['download_cgiscript'].'?p='.(!empty($dir)?implode('/',$dir).'/':'') : '?download=';
 			echo '<a href="'.$download_prefix.urlencode($file['file']).'"><img src="'.rooturl().'images/download_arrow.gif" alt="('.$lang['download'].')" title="'.$lang['download_link'].'" /></a></td>';
 		}
+		*/
 		echo '<td>'.date ($lang['date_format'], $file['date']).'</td>';
 		echo '<td>';
 		if ($file['ext']!="directory") echo getfilesize($file['size']);
